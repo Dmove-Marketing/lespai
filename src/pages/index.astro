@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Footer from '../components/Footer.astro';
 import config from '../../config.json';
 import { funis } from '../data/funis';
 import '../styles/lespai.css';
@@ -62,12 +63,7 @@ const P = config.media.cdn_base + '/photos';
       </section>
     </main>
 
-    <footer class="rodape">
-      <div class="wrap">
-        <img src={`${P}/lespai-logo-negativo.svg`} alt="L’Espai Banqueteria" width="738" height="374" loading="lazy" />
-        <p>Copyright © 2026 L’Espai Banqueteria - Todos os direitos reservados</p>
-      </div>
-    </footer>
+    <Footer />
   </div>
 
   <script>

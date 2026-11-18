@@ -1,0 +1,29 @@
+---
+import config from '../../config.json';
+const logo = `${config.media.cdn_base}/photos/lespai-logo-negativo.svg`;
+const logoDmove = 'https://media.dmove.com.br/clients/dmove/photos/logo-dmove.webp';
+---
+
+<footer class="rodape">
+  <div class="wrap">
+    <img src={logo} alt="L’Espai Banqueteria" width="738" height="374" loading="lazy" />
+    <div class="rodape-info">
+      <p>Copyright © 2026 L’Espai Banqueteria - Todos os direitos reservados</p>
+      <p class="rodape-dev">
+        Desenvolvido por:
+        <a href="https://dmove.com.br" target="_blank" rel="noopener" aria-label="Dmove">
+          <img src={logoDmove} alt="Dmove" height="22" loading="lazy" />
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style is:global>
+  .rodape-info { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+  .rodape-dev { display: inline-flex; align-items: center; gap: 10px; }
+  .rodape-dev a { display: inline-flex; }
+  .rodape-dev img { height: 22px; width: auto; opacity: .85; transition: opacity .2s ease; }
+  .rodape-dev a:hover img { opacity: 1; }
+  @media (max-width: 900px) { .rodape-info { align-items: center; } }
+</style>
