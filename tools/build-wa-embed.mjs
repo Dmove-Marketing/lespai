@@ -13,7 +13,7 @@ const CONFIG = {
   displayName: "L'Espai Banqueteria",
   phone: '5511961882002',
   avatar: cfg.media.cdn_base + '/photos/favicon.webp',
-  submitUrl: 'https://server3n8n.dmove.com.br/webhook/lespai',
+  submitUrl: 'https://server3n8n.dmove.com.br/webhook/lespai-site', // webhook do SITE (mesmo do formulário do Wix; o nó "Normaliza Wix" converte o formato)
   project: 'lespai-site',
   fonte: 'Site',          // "Site" roteia para o endpoint "Site" do Voe (ver nó Voe no n8n)
   origem: 'Orgânico',
@@ -62,6 +62,23 @@ css = `#wa-widget{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto
 // ---- JS ----
 let js = src.slice(src.indexOf('<script define:vars'), src.indexOf('</script>'));
 js = js.slice(js.indexOf('>') + 1);
+
+// formato do Wix (submissions[] com rótulo/valor): o webhook lespai-site espera esse formato
+js = js.replace('async function submitLead() {', `const toWixShape = (p, a) => ({
+    formName: 'Popup WhatsApp (site)',
+    submissions: [
+      { label: 'Nome e Sobrenome', value: p.Nome },
+      { label: 'Email', value: p['E-mail'] },
+      { label: 'Telefone com DDD', value: p.WhatsApp },
+      { label: 'Tipo de Evento', value: a.tipo_evento?.display || p['Tipo de evento'] },
+      { label: 'Nº de Convidados', value: p.Convidados },
+      { label: 'Data do Evento', value: p['Data do evento'] },
+      { label: 'Message', value: 'Lead via popup de WhatsApp do site' },
+    ],
+    submissionTime: new Date().toISOString(),
+  });
+  async function submitLead() {`);
+js = js.replace('body: JSON.stringify(payload),', 'body: JSON.stringify(toWixShape(payload, a)),');
 
 // payload: remove o tracking do template (Wix não tem UTMCapture) e fixa Fonte/origem do site
 js = js.replace(/const trackingRaw[\s\S]*?const pageSource = [^\n]*\n/, `const tracking = {};\n    const pageSource = ${JSON.stringify(CONFIG.fonte)};\n`);
