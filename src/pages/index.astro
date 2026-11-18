@@ -1,0 +1,81 @@
+---
+import Base from '../layouts/Base.astro';
+import config from '../../config.json';
+import { funis } from '../data/funis';
+import '../styles/lespai.css';
+import '../styles/lespai-hub.css';
+
+const P = config.media.cdn_base + '/photos';
+---
+
+<Base
+  title="Eventos | L’Espai Banqueteria"
+  description="Alta gastronomia para o seu evento. Escolha o tipo de evento e solicite uma proposta personalizada da L’Espai Banqueteria."
+  canonical={`https://${config.domain}/`}
+  ogImage={`${P}/lespai-cateringcorporativo-hero.webp`}
+  favicon={`${P}/favicon.webp`}
+  hideWhatsApp={true}
+>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600&family=Noto+Serif+Display:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
+  </Fragment>
+
+  <div class="pagina-simples">
+    <header class="topo-fixo solido">
+      <div class="wrap">
+        <a class="logo-moldura" href="/" aria-label="L’Espai Banqueteria">
+          <img src={`${P}/lespai-logo-negativo.svg`} alt="L’Espai Banqueteria" width="738" height="374" fetchpriority="high" />
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hub">
+        <span class="circulo circulo-1" aria-hidden="true" style="width:clamp(240px,34vw,480px);aspect-ratio:1;top:-160px;left:-120px"></span>
+        <div class="wrap">
+          <div class="cabecalho-centro">
+            <span class="sobretitulo">Eventos</span>
+            <h1>Que tipo de <em>evento</em> você vai realizar?</h1>
+            <p class="texto-apoio">Escolha uma opção e receba uma proposta gastronômica sob medida.</p>
+          </div>
+          <ul class="hub-grade">
+            {funis.map((f) => (
+              <li>
+                <a
+                  class="tri-card"
+                  href={f.href}
+                  data-funil={f.id}
+                  {...(f.external ? { target: '_blank', rel: 'noopener' } : {})}
+                >
+                  <img src={f.img} alt={`Eventos — ${f.label}`} loading="lazy" />
+                  <div class="tri-corpo">
+                    <h2>{f.label}</h2>
+                    <span class="tri-cta">Solicitar orçamento <span class="seta" aria-hidden="true"></span></span>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="rodape">
+      <div class="wrap">
+        <img src={`${P}/lespai-logo-negativo.svg`} alt="L’Espai Banqueteria" width="738" height="374" loading="lazy" />
+        <p>Copyright © 2026 L’Espai Banqueteria - Todos os direitos reservados</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('[data-funil]').forEach((el) =>
+      el.addEventListener('click', () => {
+        (window as any).dataLayer = (window as any).dataLayer || [];
+        (window as any).dataLayer.push({ event: 'escolha_funil', funil: el.getAttribute('data-funil') });
+      }),
+    );
+  </script>
+</Base>

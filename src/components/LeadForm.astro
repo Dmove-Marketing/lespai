@@ -1,0 +1,78 @@
+---
+// Formulário padrão Dmove — renderiza os campos do preset (form-presets.ts).
+// O envio/validação/máscara é do forms.ts; aqui só marcação + wiring (data-*).
+import config from '../../config.json';
+import { getPreset } from '../scripts/form-presets';
+
+interface Props {
+  id?: string;          // form_id (chave em config.forms)
+  preset?: string;
+  submitUrl?: string;
+  class?: string;
+  buttonLabel?: string;
+}
+
+const {
+  id = 'lead-form',
+  preset = (config.forms as any)[id]?.preset,
+  submitUrl = (config.forms as any)[id]?.webhooks?.[0] || '',
+  class: className = '',
+  buttonLabel = 'Enviar solicitação',
+} = Astro.props;
+
+const fields = getPreset(preset);
+const gridId = `${id}-grid`;
+const successId = `${id}-success`;
+---
+
+<form
+  class:list={['form-contato', className]}
+  data-form-id={id}
+  data-submit-url={submitUrl}
+  data-grid-id={gridId}
+  data-success-id={successId}
+  data-project={config.project_slug}
+  novalidate
+>
+  <div class="form-grid" id={gridId}>
+    {fields.map((f) => (
+      <div class:list={['campo', f.full && 'campo-inteiro']}>
+        <label for={`form-field-${f.name}`}>
+          {f.label}{f.hint && <> <span class="hint">({f.hint})</span></>}
+        </label>
+        {f.type === 'select' ? (
+          <select id={`form-field-${f.name}`} name={f.name} required={f.required}>
+            {f.options?.map((o) => (
+              <option value={o.value} disabled={o.disabled} selected={o.selected}>{o.label}</option>
+            ))}
+          </select>
+        ) : f.type === 'textarea' ? (
+          <textarea id={`form-field-${f.name}`} name={f.name} rows="4" required={f.required}></textarea>
+        ) : (
+          <input
+            type={f.type}
+            id={`form-field-${f.name}`}
+            name={f.name}
+            placeholder={f.placeholder}
+            required={f.required}
+            data-datepicker={f.datepicker ? '' : undefined}
+            autocomplete={
+              f.name === 'nome' ? 'name' : f.name === 'telefone' ? 'tel' : f.name === 'email' ? 'email' : f.name === 'empresa' ? 'organization' : 'off'
+            }
+            min={f.type === 'number' ? '1' : undefined}
+            inputmode={f.type === 'number' ? 'numeric' : undefined}
+          />
+        )}
+      </div>
+    ))}
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="visualmente-oculto" />
+    <p class="form-erro" id={`${id}FormMsg`} style="display:none" role="alert"></p>
+    <button class="btn form-submit" type="submit">
+      {buttonLabel} <span class="seta" aria-hidden="true"></span>
+    </button>
+  </div>
+  <div class="form-sucesso" id={successId} role="status">
+    <h3>Solicitação enviada!</h3>
+    <p>Nossa equipe entrará em contato em breve com a sua proposta.</p>
+  </div>
+</form>

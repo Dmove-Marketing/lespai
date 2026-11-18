@@ -1,0 +1,49 @@
+{
+  "project_name": "LP Eventos — L'Espai Banqueteria",
+  "project_slug": "lespai",
+  "domain": "eventos.lespaibanqueteria.com.br",
+  "client": "L'Espai Banqueteria",
+  "environment": "development",
+  "tracking": {
+    "gtm_id": "",
+    "enabled": true
+  },
+  "whatsapp": {
+    "phone": "",
+    "display_name": "L'Espai Banqueteria",
+    "avatar": "/images/whatsapp-avatar.jpg",
+    "enabled": false
+  },
+  "forms": {
+    "lead-form": {
+      "id": "lead-form",
+      "preset": "corporativo",
+      "redirect_on_success": "",
+      "webhooks": [
+        "https://server3n8n.dmove.com.br/webhook/lespai"
+      ]
+    },
+    "bio-form": {
+      "id": "bio-form",
+      "preset": "geral",
+      "redirect_on_success": "",
+      "webhooks": [
+        "https://server3n8n.dmove.com.br/webhook/lespai"
+      ]
+    }
+  },
+  "media": {
+    "cdn_base": "https://media.dmove.com.br/clients/lespai"
+  },
+  "deploy": {
+    "user": "root",
+    "server": "157.173.197.116",
+    "remote_path": "/var/www/eventos.lespaibanqueteria.com.br"
+  },
+  "meta": {
+    "created_at": "2026-11-18",
+    "last_updated": "2026-11-18",
+    "owner": "Dmove"
+  },
+  "site_url": "https://www.lespaibanqueteria.com.br/"
+}

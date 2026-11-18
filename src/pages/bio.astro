@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro';
+import LeadForm from '../components/LeadForm.astro';
+import config from '../../config.json';
+import '../styles/lespai.css';
+import '../styles/lespai-hub.css';
+
+const P = config.media.cdn_base + '/photos';
+const fundo = `${P}/lespai-cateringcorporativo-hero.webp`;
+---
+
+<Base
+  title="L’Espai Banqueteria | Alta gastronomia para o seu evento"
+  description="Surpreenda seus convidados com um catering personalizado. Casamentos, eventos corporativos e eventos sociais."
+  canonical={`https://${config.domain}/bio`}
+  ogImage={fundo}
+  favicon={`${P}/favicon.webp`}
+  noIndex={true}
+  hideWhatsApp={true}
+>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600&family=Noto+Serif+Display:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
+    <link rel="preload" as="image" href={fundo} fetchpriority="high" />
+  </Fragment>
+
+  <main class="bio">
+    <div class="bio-fundo">
+      <img src={fundo} alt="" width="1536" height="1024" fetchpriority="high" />
+    </div>
+    <span class="circulo circulo-1" aria-hidden="true"></span>
+
+    <div class="bio-conteudo">
+      <a class="logo-moldura" href={config.site_url} aria-label="L’Espai Banqueteria">
+        <img src={`${P}/lespai-logo-negativo.svg`} alt="L’Espai Banqueteria" width="738" height="374" />
+      </a>
+
+      <p class="bio-abas">Casamentos | Corporativos | Eventos Sociais</p>
+
+      <h1>Alta gastronomia para <em>o seu evento</em></h1>
+      <p class="hero-texto">Surpreenda seus convidados com um catering personalizado</p>
+
+      <a class="btn btn-contorno" href={config.site_url} target="_blank" rel="noopener" data-funil="site">
+        Conheça nosso site <span class="seta" aria-hidden="true"></span>
+      </a>
+
+      <h2 class="bio-form-titulo">Solicite uma proposta</h2>
+      <LeadForm id="bio-form" />
+    </div>
+  </main>
+
+  <script>
+    import '../scripts/lespai-form.ts';
+    document.querySelectorAll('[data-funil]').forEach((el) =>
+      el.addEventListener('click', () => {
+        (window as any).dataLayer = (window as any).dataLayer || [];
+        (window as any).dataLayer.push({ event: 'escolha_funil', funil: el.getAttribute('data-funil') });
+      }),
+    );
+  </script>
+</Base>

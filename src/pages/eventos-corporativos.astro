@@ -1,0 +1,371 @@
+---
+import Base from '../layouts/Base.astro';
+import LeadForm from '../components/LeadForm.astro';
+import config from '../../config.json';
+import '../styles/lespai.css';
+
+const P = config.media.cdn_base + '/photos';
+const V = config.media.cdn_base + '/videos';
+const preset = config.forms['lead-form'].preset;
+const webhook = config.forms['lead-form'].webhooks[0];
+---
+
+<Base
+  title="Catering Corporativo | L’Espai Banqueteria"
+  description="Catering personalizado para empresas que valorizam sabores memoráveis. Menus autorais para convenções, lançamentos, reuniões executivas e confraternizações em São Paulo, Alphaville e Campinas."
+  canonical={`https://${config.domain}/eventos-corporativos`}
+  ogImage={`${P}/lespai-cateringcorporativo-hero.webp`}
+  favicon={`${P}/favicon.webp`}
+  hideWhatsApp={true}
+>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600&family=Noto+Serif+Display:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
+    <link rel="preload" as="image" href={`${P}/lespai-cateringcorporativo-hero.webp`} fetchpriority="high" />
+  </Fragment>
+
+<header class="topo-fixo" id="cabecalho">
+  <div class="wrap">
+    <a class="logo-moldura" href="#topo" aria-label="L’Espai Banqueteria, voltar ao início">
+      <img src={`${P}/lespai-logo-negativo.svg`} alt="L’Espai Banqueteria" width="738" height="374">
+    </a>
+    <div class="menu">
+      <a class="btn" href="#contato">Solicite uma proposta</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="topo">
+  <div class="hero-midia">
+    <img src={`${P}/lespai-cateringcorporativo-hero.webp`} alt="Mesa de buffet com frios, queijos, frutas e flores servida pela L’Espai em evento corporativo" width="1536" height="1024" fetchpriority="high">
+  </div>
+  <span class="circulo circulo-1" aria-hidden="true"></span>
+  <span class="circulo circulo-2" aria-hidden="true"></span>
+  <div class="wrap">
+    <div class="hero-conteudo">
+      <span class="sobretitulo revelar">Catering corporativo</span>
+      <h1 class="revelar">Gastronomia que transforma o <em>seu evento corporativo</em></h1>
+      <p class="hero-texto revelar">Catering personalizado para empresas que valorizam sabores memoráveis</p>
+      <a class="btn revelar" href="#contato">Solicite uma proposta</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOBRE ===== -->
+<section class="sobre" id="sobre">
+  <div class="wrap grade-sobre">
+    <div class="sobre-texto">
+      <span class="sobretitulo revelar">Sobre a L’Espai</span>
+      <h2 class="titulo-secao revelar">Criatividade à mesa. <em>Excelência em cada detalhe</em></h2>
+      <div class="texto-apoio revelar">
+        <p>Na L’Espai Banqueteria, transformamos a gastronomia em parte essencial de cada evento. Inspirados por diferentes culturas e sabores, criamos menus autorais, com criatividade, técnica e a assinatura de chef.</p>
+        <p>Com atuação em São Paulo, Alphaville, Campinas e outras regiões do estado, levamos nossa cozinha a diferentes espaços.</p>
+      </div>
+      <ul class="regioes revelar" aria-label="Regiões atendidas">
+        <li><span class="seta" aria-hidden="true"></span>São Paulo</li>
+        <li><span class="seta" aria-hidden="true"></span>Alphaville</li>
+        <li><span class="seta" aria-hidden="true"></span>Campinas</li>
+      </ul>
+    </div>
+    <div class="sobre-midia revelar">
+      <span class="circulo-ameixa" aria-hidden="true"></span>
+      <video src={`${V}/lespai-cateringcorporativo-sobre.mp4`} poster={`${P}/lespai-cateringcorporativo-sobre-poster.webp`} autoplay muted loop playsinline preload="metadata" aria-label="Vídeo dos bastidores: equipe L’Espai preparando e servindo pratos em evento"></video>
+      <img class="triangulo-decor" src={`${P}/lespai-simbolo-triangulo.svg`} alt="" aria-hidden="true" width="126" height="228">
+    </div>
+  </div>
+</section>
+
+<!-- ===== FORMATOS GASTRONÔMICOS ===== -->
+<section class="formatos secao-clara" id="formatos">
+  <div class="wrap">
+    <div class="cabecalho-secao">
+      <div>
+        <span class="sobretitulo revelar">Formatos gastronômicos</span>
+        <h2 class="titulo-secao revelar">Diferentes formatos.<br> <em>Infinitas possibilidades.</em></h2>
+      </div>
+      <p class="texto-apoio revelar">Criamos propostas gastronômicas alinhadas<br> à identidade de cada evento</p>
+    </div>
+    <ul class="grade-formatos">
+      <li class="formato revelar">
+        <div class="formato-foto"><img src={`${P}/lespai-cateringcorporativo-formatos-coffeebreak.webp`} alt="Coffee break com mini sanduíches, canapés e pães sobre mesa de madeira" width="900" height="1350" loading="lazy"></div>
+        <div class="formato-info"><span class="formato-numero">01</span><h3>Coffee break &amp; welcome coffee</h3><p>Recepções e pausas com sabor e cuidado</p></div>
+      </li>
+      <li class="formato revelar">
+        <div class="formato-foto"><img src={`${P}/lespai-cateringcorporativo-formatos-almocosempratados.webp`} alt="Prato empratado com polvo grelhado, milho e flores comestíveis" width="900" height="1350" loading="lazy"></div>
+        <div class="formato-info"><span class="formato-numero">02</span><h3>Almoços empratados</h3><p>Uma experiência servida à mesa</p></div>
+      </li>
+      <li class="formato revelar">
+        <div class="formato-foto"><img src={`${P}/lespai-cateringcorporativo-formatos-francoamericano.webp`} alt="Buffet franco-americano com panelas de ferro e réchauds" width="900" height="1350" loading="lazy"></div>
+        <div class="formato-info"><span class="formato-numero">03</span><h3>Franco-americano</h3><p>Variedade e liberdade de um buffet gourmet</p></div>
+      </li>
+      <li class="formato revelar">
+        <div class="formato-foto"><img src={`${P}/lespai-cateringcorporativo-formatos-fingerfood.webp`} alt="Garçom servindo finger food em taças sobre bandeja" width="900" height="1350" loading="lazy"></div>
+        <div class="formato-info"><span class="formato-numero">04</span><h3>Coquetéis &amp; finger food</h3><p>Sabores criativos para encontros dinâmicos</p></div>
+      </li>
+      <li class="formato revelar">
+        <div class="formato-foto"><img src={`${P}/lespai-cateringcorporativo-formatos-ilhasgastronomicas.webp`} alt="Ilha gastronômica de queijos, frios, tomates e frutas" width="900" height="1350" loading="lazy"></div>
+        <div class="formato-info"><span class="formato-numero">05</span><h3>Ilhas gastronômicas</h3><p>Diferentes propostas reunidas em uma mesma ocasião</p></div>
+      </li>
+      <li class="formato revelar">
+        <div class="formato-foto"><img src={`${P}/lespai-cateringcorporativo-formatos-jantaresespeciais.webp`} alt="Entradas de tartare servidas em pratos de cerâmica para jantar especial" width="900" height="1350" loading="lazy"></div>
+        <div class="formato-info"><span class="formato-numero">06</span><h3>Jantares especiais</h3><p>Menus personalizados, incluindo opções em cinco tempos</p></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== TIPOS DE EVENTOS ===== -->
+<section class="tipos-de-eventos" id="tipos-de-eventos">
+  <div class="wrap">
+    <div class="cabecalho-centro">
+      <span class="sobretitulo revelar">Tipos de eventos</span>
+      <h2 class="titulo-secao revelar">Catering para <em>diferentes ocasiões</em></h2>
+      <p class="texto-apoio revelar">Você decide o formato do evento. Nós trazemos a solução gastronômica ideal.</p>
+    </div>
+    <ul class="lista-ocasioes revelar">
+      <li class="ocasiao">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0"/><path d="M12 17.5v3.5"/><path d="M8.5 21h7"/></svg>
+        Convenções e kick&#8209;offs
+      </li>
+      <li class="ocasiao">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3.5" width="18" height="12"/><path d="M12 15.5v4"/><path d="M8 21l4-1.5 4 1.5"/><path d="M7 12l3-3 2.5 2 4.5-4.5"/></svg>
+        Plenárias e treinamentos
+      </li>
+      <li class="ocasiao">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 3l1.9 5.6L18.5 10.5l-5.6 1.9L11 18l-1.9-5.6L3.5 10.5l5.6-1.9z"/><path d="M18.5 15l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg>
+        Lançamentos de produtos
+      </li>
+      <li class="ocasiao">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-10.5a6.5 6.5 0 0 1 13 0C18.5 15.4 12 21 12 21z"/><circle cx="12" cy="10.5" r="2.3"/></svg>
+        Roadshows e ativações
+      </li>
+      <li class="ocasiao">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13"/><path d="M8.5 7V4.5h7V7"/><path d="M3 12.5h18"/><path d="M11 12.5v2h2v-2"/></svg>
+        Reuniões executivas
+      </li>
+      <li class="ocasiao">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h6l-.6 5.5a2.4 2.4 0 0 1-4.8 0z"/><path d="M8 12v7"/><path d="M5.5 20h5"/><path d="M13 4h6l-.6 5.5a2.4 2.4 0 0 1-4.8 0z"/><path d="M16 12v7"/><path d="M13.5 20h5"/><path d="M11.2 1.5l.8 1.2M14 1l-.4 1.5M8.5 1.2l.6 1.3"/></svg>
+        Confraternizações corporativas
+      </li>
+    </ul>
+  </div>
+
+  <div class="carrossel revelar" aria-roledescription="carrossel" aria-label="Galeria de tipos de eventos">
+    <div class="carrossel-janela">
+    <div class="carrossel-trilho" id="carrossel-eventos">
+      <figure><img src={`${P}/lespai-cateringcorporativo-tiposdeeventos5.webp`} alt="Convidados ao redor de mesa de buffet com arranjos de hortênsias em evento corporativo" width="1000" height="1499" loading="lazy"></figure>
+      <figure><img src={`${P}/lespai-cateringcorporativo-tiposdeeventos1.webp`} alt="Croquetes servidos em pratinhos de cerâmica" width="1300" height="867" loading="lazy"></figure>
+      <figure><img src={`${P}/lespai-cateringcorporativo-tiposdeeventos4.webp`} alt="Bancada de buffet com saladas, legumes e entradas" width="1000" height="1500" loading="lazy"></figure>
+      <figure><img src={`${P}/lespai-cateringcorporativo-tiposdeeventos7.webp`} alt="Mesa de buffet montada em jardim com flores e louças artesanais" width="1800" height="1200" loading="lazy"></figure>
+      <figure><img src={`${P}/lespai-cateringcorporativo-tiposdeeventos2.webp`} alt="Finger foods de salmão em travessas de cerâmica" width="1000" height="1500" loading="lazy"></figure>
+      <figure><img src={`${P}/lespai-cateringcorporativo-tiposdeeventos6.webp`} alt="Bolinhos servidos em travessa diante do mosaico do Espaço Trencadís" width="1800" height="1124" loading="lazy"></figure>
+      <figure><img src={`${P}/lespai-cateringcorporativo-tiposdeeventos3.webp`} alt="Salada de polvo com grãos em travessa sobre mesa decorada" width="1000" height="1500" loading="lazy"></figure>
+    </div>
+    </div>
+    <div class="wrap carrossel-controles">
+      <button class="btn-seta voltar" type="button" data-direcao="-1" aria-label="Fotos anteriores"><span class="seta" aria-hidden="true"></span></button>
+      <button class="btn-seta" type="button" data-direcao="1" aria-label="Próximas fotos"><span class="seta" aria-hidden="true"></span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EQUIPE OPERACIONAL ===== -->
+<section class="equipe" id="equipe">
+  <div class="wrap grade-equipe">
+    <div class="equipe-titulo">
+      <span class="sobretitulo revelar">Equipe operacional</span>
+      <h2 class="titulo-secao revelar">Uma equipe de <em>chefs renomados</em><br class="quebra-desktop"> à frente de cada criação</h2>
+    </div>
+    <div class="equipe-texto">
+      <p class="texto-apoio revelar">Sob a liderança do chef Diego Cerqueira,<br> nossa equipe reúne talento e repertório<br> para surpreender em cada preparo</p>
+      <a class="btn btn-contorno revelar" href="#contato">Solicite uma proposta</a>
+    </div>
+    <div class="mosaico-equipe revelar">
+      <div class="coluna">
+        <figure><img src={`${P}/lespai-cateringcorporativo-operacao1.webp`} alt="Chef da L’Espai carregando bandeja de entradas na cozinha" width="900" height="1350" loading="lazy"></figure>
+        <figure><img src={`${P}/lespai-cateringcorporativo-operacao4.webp`} alt="Chefs finalizando dezenas de pratos lado a lado" width="900" height="1350" loading="lazy"></figure>
+      </div>
+      <div class="coluna">
+        <figure><img src={`${P}/lespai-cateringcorporativo-operacao2.webp`} alt="Equipe de cozinha montando porções em série" width="900" height="1350" loading="lazy"></figure>
+        <figure><img src={`${P}/lespai-cateringcorporativo-operacao6.webp`} alt="Cozinheiro finalizando sobremesas em taças" width="900" height="1350" loading="lazy"></figure>
+      </div>
+      <div class="coluna">
+        <figure><img src={`${P}/lespai-cateringcorporativo-operacao3.webp`} alt="Cozinheiro com avental L’Espai preparando receita" width="900" height="1350" loading="lazy"></figure>
+        <figure><img src={`${P}/lespai-cateringcorporativo-operacao5.webp`} alt="Cozinheiro montando salada de polvo em bowl sobre gelo" width="900" height="1350" loading="lazy"></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEEDBACKS ===== -->
+<section class="feedbacks" id="feedbacks">
+  <span class="circulo-feedback" aria-hidden="true"></span>
+  <div class="wrap">
+    <span class="sobretitulo revelar">Feedbacks</span>
+    <h2 class="visualmente-oculto">Feedbacks de clientes</h2>
+    <ul class="grade-feedbacks revelar">
+      <li class="depoimento">
+        <div>
+          <div class="aspas" aria-hidden="true">“</div>
+          <blockquote><p>Que experiência! Buffet organizado, equipe simpática e atenta… Além da gastronomia sensacional. Muitos elogios de todos os convidados.</p></blockquote>
+        </div>
+        <cite>Indaiara Ignácio da Silva</cite>
+      </li>
+      <li class="depoimento">
+        <div>
+          <div class="aspas" aria-hidden="true">“</div>
+          <blockquote><p>Desde 2019 como cliente e parceiro. Comida farta e excepcional, atendimento impecável do chef Diego Cerqueira e de todo buffet.</p></blockquote>
+        </div>
+        <cite>Itamar Borges</cite>
+      </li>
+      <li class="depoimento">
+        <div>
+          <div class="aspas" aria-hidden="true">“</div>
+          <blockquote><p>No dia do evento a comida estava divina, espaço lindo, com muito suporte pra tudo que você precisar.</p></blockquote>
+        </div>
+        <cite>Camila Santana</cite>
+      </li>
+      <li class="depoimento">
+        <div>
+          <div class="aspas" aria-hidden="true">“</div>
+          <blockquote><p>Ótimo serviço, comida maravilhosa e melhor custo benefício que pesquisei. Recomendo.</p></blockquote>
+        </div>
+        <cite>Ricardo Munhoz</cite>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== PARALAX ===== -->
+<section class="paralax" id="paralax" aria-label="Mesa de buffet L’Espai">
+  <img src={`${P}/lespai-cateringcorporativo-paralax.webp`} alt="Mesa de buffet com entradas, saladas e velas montada junto a muro de pedra" width="1536" height="1024">
+</section>
+
+<!-- ===== CLIENTES ===== -->
+<section class="clientes secao-clara" id="clientes">
+  <div class="wrap">
+    <div class="cabecalho-centro">
+      <span class="sobretitulo revelar">Clientes</span>
+      <h2 class="titulo-secao revelar">Quem experimenta, <em>recomenda</em></h2>
+      <p class="texto-apoio revelar">Veja grandes marcas que já escolheram a L’Espai Banqueteria</p>
+    </div>
+  </div>
+  <div class="revelar">
+<div class="faixa-logos"><ul class="trilho-logos"><li class="logo-item" style="--h:33px"><img src={`${P}/lespai-cateringcorporativo-clientes2.webp`} alt="Amazon" loading="lazy"></li><li class="logo-item" style="--h:31px"><img src={`${P}/lespai-cateringcorporativo-clientes1.webp`} alt="Adobe" loading="lazy"></li><li class="logo-item" style="--h:39px"><img src={`${P}/lespai-cateringcorporativo-clientes-nba.webp`} alt="NBA" loading="lazy"></li><li class="logo-item" style="--h:35px"><img src={`${P}/lespai-cateringcorporativo-clientes15.svg`} alt="Samsung" loading="lazy"></li><li class="logo-item" style="--h:47px"><img src={`${P}/lespai-cateringcorporativo-clientes16.webp`} alt="Red Bull" loading="lazy"></li><li class="logo-item" style="--h:58px"><img src={`${P}/lespai-cateringcorporativo-clientes22.webp`} alt="P&amp;G" loading="lazy"></li><li class="logo-item" style="--h:58px"><img src={`${P}/lespai-cateringcorporativo-clientes12.svg`} alt="Bayer" loading="lazy"></li><li class="logo-item" style="--h:52px"><img src={`${P}/lespai-cateringcorporativo-clientes5.svg`} alt="PwC" loading="lazy"></li><li class="logo-item" style="--h:28px"><img src={`${P}/lespai-cateringcorporativo-clientes9.webp`} alt="Bradesco" loading="lazy"></li><li class="logo-item" style="--h:49px"><img src={`${P}/lespai-cateringcorporativo-clientes14.webp`} alt="CNN Brasil" loading="lazy"></li><li class="logo-item" style="--h:40px"><img src={`${P}/lespai-cateringcorporativo-clientes4.webp`} alt="Jaguar" loading="lazy"></li><li class="logo-item" style="--h:31px"><img src={`${P}/lespai-cateringcorporativo-clientes6.webp`} alt="Range Rover" loading="lazy"></li><li class="logo-item" style="--h:34px"><img src={`${P}/lespai-cateringcorporativo-clientes10.webp`} alt="Chevrolet" loading="lazy"></li><li class="logo-item" aria-hidden="true" style="--h:33px"><img src={`${P}/lespai-cateringcorporativo-clientes2.webp`} alt="" loading="lazy"></li><li class="logo-item" aria-hidden="true" style="--h:31px"><img src={`${P}/lespai-cateringcorporativo-clientes1.webp`} alt="" loading="lazy"></li><li class="logo-item" aria-hidden="true" style="--h:39px"><img src={`${P}/lespai-cateringcorporativo-clientes-nba.webp`} alt="" loading="lazy"></li><li class="logo-item" aria-hidden="true" style="--h:35px"><img src={`${P}/lespai-cateringcorporativo-clientes15.svg`} alt="" loading="lazy"></li><li class="logo-item" aria-hidden="true" style="--h:47px"><img src={`${P}/lespai-cateringcorporativo-clientes16.webp`} alt="" loading="lazy"></li><li class="logo-item" aria-hidden="true" style="--h:58px"><img src={`${P}/lespai-cateringcorporativo-clientes22.webp`} alt="" loading="lazy"></li><li class="logo-item" aria-hidden="true" style="--h:58px"><img src={`${P}/lespai-cateringcorporativo-clientes12.svg`} alt="" loading="lazy"></li><li class="logo-item" aria-hidden="true" style="--h:52px"><img src={`${P}/lespai-cateringcorporativo-clientes5.svg`} alt="" loading="lazy"></li><li class="logo-item" aria-hidden="true" style="--h:28px"><img src={`${P}/lespai-cateringcorporativo-clientes9.webp`} alt="" loading="lazy"></li><li class="logo-item" aria-hidden="true" style="--h:49px"><img src={`${P}/lespai-cateringcorporativo-clientes14.webp`} alt="" loading="lazy"></li><li class="logo-item" aria-hidden="true" style="--h:40px"><img src={`${P}/lespai-cateringcorporativo-clientes4.webp`} alt="" loading="lazy"></li><li class="logo-item" aria-hidden="true" style="--h:31px"><img src={`${P}/lespai-cateringcorporativo-clientes6.webp`} alt="" loading="lazy"></li><li class="logo-item" aria-hidden="true" style="--h:34px"><img src={`${P}/lespai-cateringcorporativo-clientes10.webp`} alt="" loading="lazy"></li></ul></div>
+
+<div class="faixa-logos faixa-reversa"><ul class="trilho-logos"><li class="logo-item" style="--h:46px"><img src={`${P}/lespai-cateringcorporativo-clientes19.webp`} alt="Scania" loading="lazy"></li><li class="logo-item" style="--h:39px"><img src={`${P}/lespai-cateringcorporativo-clientes17.webp`} alt="Raízen" loading="lazy"></li><li class="logo-item" style="--h:32px"><img src={`${P}/lespai-cateringcorporativo-clientes20.webp`} alt="Ipiranga" loading="lazy"></li><li class="logo-item" style="--h:26px"><img src={`${P}/lespai-cateringcorporativo-clientes3.webp`} alt="Goodyear" loading="lazy"></li><li class="logo-item" style="--h:38px"><img src={`${P}/lespai-cateringcorporativo-clientes13.webp`} alt="Creed" loading="lazy"></li><li class="logo-item" style="--h:25px"><img src={`${P}/lespai-cateringcorporativo-clientes23.webp`} alt="Pantene" loading="lazy"></li><li class="logo-item" style="--h:42px"><img src={`${P}/lespai-cateringcorporativo-clientes11.webp`} alt="Gillette Venus" loading="lazy"></li><li class="logo-item" style="--h:28px"><img src={`${P}/lespai-cateringcorporativo-clientes7.webp`} alt="Petz" loading="lazy"></li><li class="logo-item" style="--h:58px"><img src={`${P}/lespai-cateringcorporativo-clientes8.webp`} alt="Waze" loading="lazy"></li><li class="logo-item" style="--h:42px"><img src={`${P}/lespai-cateringcorporativo-clientes26.svg`} alt="Multishow" loading="lazy"></li><li class="logo-item" style="--h:58px"><img src={`${P}/lespai-cateringcorporativo-clientes21.webp`} alt="Editora Globo" loading="lazy"></li><li class="logo-item" style="--h:44px"><img src={`${P}/lespai-cateringcorporativo-clientes24.webp`} alt="G4 Educação" loading="lazy"></li><li class="logo-item" style="--h:58px"><img src={`${P}/lespai-cateringcorporativo-clientes25.webp`} alt="O2 Filmes" loading="lazy"></li><li class="logo-item" aria-hidden="true" style="--h:46px"><img src={`${P}/lespai-cateringcorporativo-clientes19.webp`} alt="" loading="lazy"></li><li class="logo-item" aria-hidden="true" style="--h:39px"><img src={`${P}/lespai-cateringcorporativo-clientes17.webp`} alt="" loading="lazy"></li><li class="logo-item" aria-hidden="true" style="--h:32px"><img src={`${P}/lespai-cateringcorporativo-clientes20.webp`} alt="" loading="lazy"></li><li class="logo-item" aria-hidden="true" style="--h:26px"><img src={`${P}/lespai-cateringcorporativo-clientes3.webp`} alt="" loading="lazy"></li><li class="logo-item" aria-hidden="true" style="--h:38px"><img src={`${P}/lespai-cateringcorporativo-clientes13.webp`} alt="" loading="lazy"></li><li class="logo-item" aria-hidden="true" style="--h:25px"><img src={`${P}/lespai-cateringcorporativo-clientes23.webp`} alt="" loading="lazy"></li><li class="logo-item" aria-hidden="true" style="--h:42px"><img src={`${P}/lespai-cateringcorporativo-clientes11.webp`} alt="" loading="lazy"></li><li class="logo-item" aria-hidden="true" style="--h:28px"><img src={`${P}/lespai-cateringcorporativo-clientes7.webp`} alt="" loading="lazy"></li><li class="logo-item" aria-hidden="true" style="--h:58px"><img src={`${P}/lespai-cateringcorporativo-clientes8.webp`} alt="" loading="lazy"></li><li class="logo-item" aria-hidden="true" style="--h:42px"><img src={`${P}/lespai-cateringcorporativo-clientes26.svg`} alt="" loading="lazy"></li><li class="logo-item" aria-hidden="true" style="--h:58px"><img src={`${P}/lespai-cateringcorporativo-clientes21.webp`} alt="" loading="lazy"></li><li class="logo-item" aria-hidden="true" style="--h:44px"><img src={`${P}/lespai-cateringcorporativo-clientes24.webp`} alt="" loading="lazy"></li><li class="logo-item" aria-hidden="true" style="--h:58px"><img src={`${P}/lespai-cateringcorporativo-clientes25.webp`} alt="" loading="lazy"></li></ul></div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq" id="faq">
+  <div class="wrap grade-faq">
+    <div class="faq-titulo">
+      <span class="sobretitulo revelar">FAQ</span>
+      <h2 class="titulo-secao revelar">Ainda tem dúvidas? <em>Vamos esclarecer!</em></h2>
+      <a class="btn revelar" href="#contato">Solicite uma proposta</a>
+    </div>
+    <div class="lista-faq revelar">
+      <details>
+        <summary>A L’Espai Banqueteria atende eventos em espaços externos? <span class="seta" aria-hidden="true"></span></summary>
+        <p class="resposta">Sim. A L’Espai Banqueteria trabalha com catering e realiza eventos em espaços de terceiros, adaptando sua operação às características de cada local.</p>
+      </details>
+      <details>
+        <summary>Quais tipos de eventos corporativos são atendidos? <span class="seta" aria-hidden="true"></span></summary>
+        <p class="resposta">Convenções, kick-offs, plenárias, treinamentos, lançamentos de produtos, roadshows, reuniões executivas, ativações e confraternizações.</p>
+      </details>
+      <details>
+        <summary>É possível personalizar o menu? <span class="seta" aria-hidden="true"></span></summary>
+        <p class="resposta">Sim. Todos os menus são criados do zero, considerando a proposta do evento, o perfil dos convidados e as necessidades de cada empresa.</p>
+      </details>
+      <details>
+        <summary>Quais formatos de serviço gastronômico estão disponíveis? <span class="seta" aria-hidden="true"></span></summary>
+        <p class="resposta">Coffee break, welcome coffee, almoço empratado, franco-americano, coquetel, finger food, ilhas gastronômicas e jantares especiais, entre outros formatos.</p>
+      </details>
+      <details>
+        <summary>Quais regiões a L’Espai Banqueteria atende? <span class="seta" aria-hidden="true"></span></summary>
+        <p class="resposta">A operação atende São Paulo, Alphaville, Campinas e outras localidades do estado de São Paulo.</p>
+      </details>
+      <details>
+        <summary>Como solicitar um orçamento? <span class="seta" aria-hidden="true"></span></summary>
+        <p class="resposta">Basta preencher o formulário com as informações iniciais do evento. Nossa equipe entrará em contato para entender a demanda e desenvolver uma proposta.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALERIA ===== -->
+<section class="galeria" id="galeria">
+  <div class="wrap">
+    <div class="cabecalho-secao">
+      <div>
+        <span class="sobretitulo revelar">Galeria</span>
+        <h2 class="titulo-secao revelar">Um convite visual para <em>despertar o paladar</em></h2>
+      </div>
+      <p class="texto-apoio revelar">Conheça algumas de nossas criações 100% autorais</p>
+    </div>
+    <ul class="grade-galeria revelar">
+      <li class="paisagem"><button class="galeria-abrir" type="button" aria-label="Ampliar foto: Atum selado com flores comestíveis em prato de cerâmica"><img src={`${P}/lespai-cateringcorporativo-galeria1.webp`} alt="Atum selado com flores comestíveis em prato de cerâmica" width="1600" height="1083" loading="lazy"></button></li>
+      <li class="retrato"><button class="galeria-abrir" type="button" aria-label="Ampliar foto: Mesa de frios, frutas e queijos com hortênsias azuis"><img src={`${P}/lespai-cateringcorporativo-galeria2.webp`} alt="Mesa de frios, frutas e queijos com hortênsias azuis" width="900" height="1350" loading="lazy"></button></li>
+      <li class="retrato"><video src={`${V}/lespai-cateringcorporativo-galeria6.webm`} poster={`${P}/lespai-cateringcorporativo-galeria6-poster.webp`} autoplay muted loop playsinline preload="metadata" aria-label="Vídeo de pratos autorais e buffet L’Espai em evento"></video></li>
+      <li class="retrato"><button class="galeria-abrir" type="button" aria-label="Ampliar foto: Chef finalizando camarões em taças individuais"><img src={`${P}/lespai-cateringcorporativo-galeria3.webp`} alt="Chef finalizando camarões em taças individuais" width="900" height="1350" loading="lazy"></button></li>
+      <li class="retrato"><button class="galeria-abrir" type="button" aria-label="Ampliar foto: Torradas com salmão e brotos em travessa"><img src={`${P}/lespai-cateringcorporativo-galeria7.webp`} alt="Torradas com salmão e brotos em travessa" width="900" height="1350" loading="lazy"></button></li>
+      <li class="paisagem"><button class="galeria-abrir" type="button" aria-label="Ampliar foto: Medalhão de carne com molho e farofa em prato branco"><img src={`${P}/lespai-cateringcorporativo-galeria4.webp`} alt="Medalhão de carne com molho e farofa em prato branco" width="1600" height="1067" loading="lazy"></button></li>
+      <li class="paisagem"><button class="galeria-abrir" type="button" aria-label="Ampliar foto: Polvo grelhado com batata roxa e ervas"><img src={`${P}/lespai-cateringcorporativo-galeria5.webp`} alt="Polvo grelhado com batata roxa e ervas" width="1600" height="1067" loading="lazy"></button></li>
+      <li class="retrato"><button class="galeria-abrir" type="button" aria-label="Ampliar foto: Tábua de frutas secas, morangos e favo de mel"><img src={`${P}/lespai-cateringcorporativo-galeria9.webp`} alt="Tábua de frutas secas, morangos e favo de mel" width="900" height="1350" loading="lazy"></button></li>
+      <li class="retrato"><button class="galeria-abrir" type="button" aria-label="Ampliar foto: Saladas de tomate e burrata em buffet"><img src={`${P}/lespai-cateringcorporativo-galeria8.webp`} alt="Saladas de tomate e burrata em buffet" width="900" height="1350" loading="lazy"></button></li>
+      <li class="retrato"><button class="galeria-abrir" type="button" aria-label="Ampliar foto: Mesa de buffet ao ar livre com frutas e flores"><img src={`${P}/lespai-cateringcorporativo-galeria11.webp`} alt="Mesa de buffet ao ar livre com frutas e flores" width="900" height="1350" loading="lazy"></button></li>
+      <li class="retrato"><button class="galeria-abrir" type="button" aria-label="Ampliar foto: Cumbucas de moqueca com arroz e farofa"><img src={`${P}/lespai-cateringcorporativo-galeria12.webp`} alt="Cumbucas de moqueca com arroz e farofa" width="900" height="1350" loading="lazy"></button></li>
+      <li class="paisagem foco-centro"><button class="galeria-abrir" type="button" aria-label="Ampliar foto: Buffet à luz de velas com abóboras e arroz"><img src={`${P}/lespai-cateringcorporativo-galeria10.webp`} alt="Buffet à luz de velas com abóboras e arroz" width="900" height="1350" loading="lazy"></button></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== CONTATO / FORMULÁRIO ===== -->
+<section class="contato" id="contato">
+  <div class="contato-midia">
+    <img src={`${P}/lespai-cateringcorporativo-formulario.webp`} alt="" width="1920" height="1035" loading="lazy">
+  </div>
+  <span class="circulo" aria-hidden="true"></span>
+  <div class="wrap grade-contato">
+    <div>
+      <span class="sobretitulo revelar">Contato</span>
+      <h2 class="titulo-secao revelar">Vamos planejar seu <em>próximo evento?</em></h2>
+      <p class="texto-apoio revelar">Nossa equipe criará uma proposta<br> sob medida para sua empresa.</p>
+    </div>
+
+    <LeadForm id="lead-form" preset={preset} submitUrl={webhook} class="revelar" />
+  </div>
+</section>
+
+</main>
+
+<!-- ===== LIGHTBOX DA GALERIA ===== -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada da galeria" hidden>
+  <button class="lightbox-fechar" type="button" aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  <button class="btn-seta voltar lightbox-anterior" type="button" aria-label="Foto anterior"><span class="seta" aria-hidden="true"></span></button>
+  <figure class="lightbox-figura">
+    <img id="lightbox-img" alt="">
+    <figcaption id="lightbox-contador"></figcaption>
+  </figure>
+  <button class="btn-seta lightbox-proxima" type="button" aria-label="Próxima foto"><span class="seta" aria-hidden="true"></span></button>
+</div>
+
+<!-- ===== RODAPÉ ===== -->
+<footer class="rodape">
+  <div class="wrap">
+    <img src={`${P}/lespai-logo-negativo.svg`} alt="L’Espai Banqueteria" width="738" height="374" loading="lazy">
+    <p>Copyright © 2026 L’Espai Banqueteria - Todos os direitos reservados</p>
+  </div>
+</footer>
+
+
+  <script>
+    import '../scripts/lespai-lp.js';
+    import '../scripts/lespai-form.ts';
+  </script>
+</Base>
