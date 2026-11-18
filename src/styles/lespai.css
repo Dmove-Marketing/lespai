@@ -528,3 +528,26 @@ h1, h2, h3 { line-height: 1.1; letter-spacing: normal; }
 .form-erro { grid-column: 1 / -1; color: #ff9b9b; font-size: 14px; text-align: center; }
 .campo .hint { text-transform: none; letter-spacing: 0.02em; opacity: .75; }
 .campo .field-error { color: #ff9b9b; }
+
+/* ===== Formatos: scroll pinned (rolagem vertical controla o carrossel horizontal) ===== */
+.formatos-fixo { position: relative; }
+.formatos-fixo .formatos-sticky {
+  position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden;
+  display: flex; align-items: center;
+}
+.formatos-fixo .formatos-sticky > .wrap { padding-top: var(--altura-topo); }
+#formatos:has(.formatos-fixo) { padding: 0; }
+.formatos-fixo .cabecalho-secao { margin-bottom: clamp(24px, 4vh, 48px); }
+.formatos-fixo .grade-formatos {
+  --w: min(clamp(240px, 28vw, 380px), 36vh);
+  display: flex; grid-template-columns: none; grid-auto-flow: row;
+  overflow: visible; scroll-snap-type: none; margin: 0; padding: 0;
+  gap: clamp(20px, 2.4vw, 36px); width: max-content; will-change: transform;
+}
+.formatos-fixo .formato { flex: 0 0 var(--w); width: var(--w); scroll-snap-align: none; }
+.formatos-fixo .formato-foto { aspect-ratio: 4 / 5; }
+.formatos-fixo .formato-info { padding-top: 14px; }
+@media (max-width: 900px) {
+  .formatos-fixo .grade-formatos { --w: min(74vw, 34vh); }
+  .formatos-fixo .cabecalho-secao .texto-apoio { display: none; }
+}

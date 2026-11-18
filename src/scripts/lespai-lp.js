@@ -141,4 +141,44 @@
     });
   }
 
+
+  // Formatos (SÓ MOBILE): scroll "preso" — a rolagem vertical anda com o carrossel horizontal até o fim
+  var pin = document.getElementById('formatos-pin');
+  if (pin && !reduz) {
+    var mq = window.matchMedia('(max-width: 900px)');
+    var sticky = pin.querySelector('.formatos-sticky');
+    var trilhoF = pin.querySelector('.grade-formatos');
+    var dist = 0;
+    function medeF() {
+      trilhoF.style.transform = 'none';
+      var margem = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--margem')) || 20;
+      var esq = trilhoF.getBoundingClientRect().left;
+      dist = Math.max(0, trilhoF.scrollWidth + esq - window.innerWidth + margem);
+      pin.style.height = (sticky.offsetHeight + dist) + 'px';
+      posF();
+    }
+    function posF() {
+      if (!pin.classList.contains('formatos-fixo')) return;
+      var topo = pin.getBoundingClientRect().top;
+      var p = dist > 0 ? Math.min(1, Math.max(0, -topo / dist)) : 0;
+      trilhoF.style.transform = 'translate3d(' + (-p * dist).toFixed(1) + 'px,0,0)';
+    }
+    function aplicaF() {
+      if (mq.matches) {
+        pin.classList.add('formatos-fixo');
+        trilhoF.querySelectorAll('.revelar').forEach(function (el) { el.classList.add('visivel'); });
+        medeF();
+      } else {
+        pin.classList.remove('formatos-fixo');
+        pin.style.height = '';
+        trilhoF.style.transform = '';
+      }
+    }
+    window.addEventListener('scroll', posF, { passive: true });
+    window.addEventListener('resize', function () { if (mq.matches) medeF(); else aplicaF(); });
+    window.addEventListener('load', function () { if (mq.matches) medeF(); });
+    if (mq.addEventListener) mq.addEventListener('change', aplicaF);
+    aplicaF();
+  }
+
 })();
